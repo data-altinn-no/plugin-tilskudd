@@ -5,7 +5,7 @@
     <OutputType>Exe</OutputType>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Dan.Common" Version="1.5.0" />
+    <PackageReference Include="Dan.Common" Version="1.11.0" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.9.0-preview1" OutputItemType="Analyzer" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http" Version="3.3.0" />
     <PackageReference Include="Newtonsoft.Json.Schema" Version="3.0.14" />
