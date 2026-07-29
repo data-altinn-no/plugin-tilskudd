@@ -8,7 +8,6 @@ using Dan.Common.Models;
 using Dan.Plugin.DATASOURCENAME.Models;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
-using Newtonsoft.Json.Schema.Generation;
 
 namespace Dan.Plugin.DATASOURCENAME;
 
@@ -23,8 +22,6 @@ public class Metadata : IEvidenceSourceMetadata
     /// <returns></returns>
     public List<EvidenceCode> GetEvidenceCodes()
     {
-        JSchemaGenerator generator = new JSchemaGenerator();
-
         return new List<EvidenceCode>()
         {
             new()
@@ -56,7 +53,7 @@ public class Metadata : IEvidenceSourceMetadata
                         // Convention for rich datasets with a single JSON model is to use the value name "default"
                         EvidenceValueName = "default",
                         ValueType = EvidenceValueType.JsonSchema,
-                        JsonSchemaDefintion =  generator.Generate(typeof(ExampleModel)).ToString()
+                        JsonSchemaDefintion = EvidenceValue.SchemaFromObject<ExampleModel>(Newtonsoft.Json.Formatting.Indented)
                     }
                 },
                 AuthorizationRequirements = new List<Requirement>
